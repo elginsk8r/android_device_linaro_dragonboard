@@ -1,4 +1,4 @@
-service rmtfs /vendor/bin/rmtfs -o /dev/block/platform/soc@0/1d84000.ufshc/by-name -P -r -s
+service rmtfs /vendor/bin/rmtfs -o /dev/block/bootdevice/by-name -P -r -s
     class core
     user root
     group system
