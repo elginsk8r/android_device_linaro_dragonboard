@@ -65,14 +65,6 @@ BOARD_SEPOLICY_DIRS += \
     device/linaro/dragonboard/sepolicy \
     system/bt/vendor_libs/linux/sepolicy
 
-# Enable dex pre-opt to speed up initial boot
-ifeq ($(HOST_OS),linux)
-  ifeq ($(WITH_DEXPREOPT),)
-    WITH_DEXPREOPT := true
-    WITH_DEXPREOPT_PIC := true
-  endif
-endif
-
 # Copy firmware files to ramdisk/vendor_ramdisk to workaround
 # the dependency on FW_LOADER_USER_HELPER_FALLBACK kernel config
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
