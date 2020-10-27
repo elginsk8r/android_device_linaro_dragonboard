@@ -19,6 +19,7 @@ BOARD_KERNEL_CMDLINE += printk.devkmsg=on deferred_probe_timeout=30
 BOARD_KERNEL_CMDLINE += qcom_geni_serial.con_enabled=1
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_RAMDISK_OFFSET := 0x02000000
+BOARD_RAMDISK_USE_XZ := true
 
 # Image Configuration
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216 # 16M
