@@ -25,4 +25,12 @@ cc_binary {
         "translate.c",
     ],
     shared_libs: ["libqrtr"],
+    required: ["tqftpserv.rc"],
+}
+
+prebuilt_etc {
+    name: "tqftpserv.rc",
+    src: "tqftpserv.rc",
+    vendor: true,
+    sub_dir: "init/hw",
 }

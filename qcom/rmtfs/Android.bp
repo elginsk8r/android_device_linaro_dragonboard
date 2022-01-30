@@ -29,4 +29,12 @@ cc_binary {
         "util.c",
     ],
     shared_libs: ["libqrtr"],
+    required: ["rmtfs.rc"],
+}
+
+prebuilt_etc {
+    name: "rmtfs.rc",
+    src: "rmtfs.rc",
+    vendor: true,
+    sub_dir: "init/hw",
 }
