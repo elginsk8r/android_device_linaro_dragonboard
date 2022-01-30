@@ -1,0 +1,6 @@
+service set_hw /vendor/bin/set_hw.sh
+    class core
+    user root
+    group system
+    disabled
+    oneshot
