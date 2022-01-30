@@ -27,4 +27,12 @@ cc_binary {
 	"servreg_loc.c",
     ],
     shared_libs: ["libqrtr"],
+    required: ["pd-mapper.rc"],
+}
+
+prebuilt_etc {
+    name: "pd-mapper.rc",
+    src: "pd-mapper.rc",
+    vendor: true,
+    sub_dir: "init/hw",
 }

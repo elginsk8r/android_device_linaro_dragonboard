@@ -36,6 +36,7 @@ PRODUCT_PACKAGES += \
 # Install scripts to set vendor.* properties
 PRODUCT_COPY_FILES += \
     device/linaro/dragonboard/qcom/set_hw.sh:$(TARGET_COPY_OUT_VENDOR)/bin/set_hw.sh \
+    device/linaro/dragonboard/qcom/set_hw.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/set_hw.rc \
     device/linaro/dragonboard/qcom/set_udc.sh:$(TARGET_COPY_OUT_VENDOR)/bin/set_udc.sh
 
 # Install scripts to set Ethernet MAC address
