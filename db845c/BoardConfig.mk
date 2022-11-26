@@ -62,3 +62,7 @@ BOARD_SUPER_PARTITION_SIZE := 12437225472
 BOARD_DB_DYNAMIC_PARTITIONS_SIZE := 12433031168 # Reserve 4M for DAP metadata
 BOARD_SUPER_PARTITION_METADATA_DEVICE := super
 BOARD_SUPER_IMAGE_IN_UPDATE_PACKAGE := true
+
+ifneq ($(filter ev_%, $(TARGET_PRODUCT)),)
+include device/linaro/dragonboard/db845c/BoardConfigEvervolv.mk
+endif
