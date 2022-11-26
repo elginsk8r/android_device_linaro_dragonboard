@@ -1,5 +1,7 @@
 ifneq ($(filter db845c db845c_mini linaro_swr sm8x50, $(TARGET_DEVICE)),)
 
+ifneq ($(TARGET_PREBUILT_KERNEL),)
+
 DTC := $(HOST_OUT)/bin/dtc
 FDTOVERLAY := $(HOST_OUT)/bin/fdtoverlay
 SM8550HDK_DTS_OVERLAY := device/linaro/dragonboard/sm8x50/dtb-overlays/sm8550-hdk.dts
@@ -23,5 +25,7 @@ $(PRODUCT_OUT)/dtb.img: $(DTC) $(FDTOVERLAY) $(SM8550HDK_DTB) $(SM8550QRD_DTB) $
 	-rm $(PRODUCT_OUT)/sm8*dtb*
 
 droidcore: $(PRODUCT_OUT)/dtb.img
+
+endif
 
 endif

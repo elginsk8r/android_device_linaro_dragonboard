@@ -18,3 +18,18 @@ PRODUCT_MAKEFILES := \
 
 COMMON_LUNCH_CHOICES := \
     db845c-trunk_staging-userdebug
+
+ifneq ($(SRC_EVERVOLV_DIR),)
+
+PRODUCT_MAKEFILES += \
+    $(LOCAL_DIR)/ev_db845c.mk \
+    $(LOCAL_DIR)/ev_db845c_mini.mk \
+    $(LOCAL_DIR)/ev_sm8450_mini.mk \
+    $(LOCAL_DIR)/ev_linaro_swr.mk \
+    $(LOCAL_DIR)/sm8x50/ev_sm8x50.mk
+
+COMMON_LUNCH_CHOICES += \
+    ev_db845c-trunk_staging-userdebug
+
+endif
+
