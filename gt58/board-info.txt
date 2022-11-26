@@ -1,0 +1,1 @@
+require board=LK2ND_MSM8916|lk2nd-msm8916|gt58

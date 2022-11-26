@@ -1,0 +1,7 @@
+/dev/block/by-name/system /system ext4 noatime,ro,errors=panic wait,first_stage_mount
+/dev/block/platform/soc@0/7824900.mmc/by-name/userdata /data ext4 discard,noatime,noauto_da_alloc,data=ordered,user_xattr,barrier=1 latemount,wait,formattable,quota
+/dev/block/platform/soc@0/7824900.mmc/by-name/cache /cache ext4 noatime,nosuid,nodev,barrier=1,noauto_da_alloc wait,check
+/dev/block/platform/soc@0/7824900.mmc/by-name/fota /misc emmc defaults defaults
+/dev/block/platform/soc@0/7824900.mmc/by-name/apnhlos /vendor/firmware_mnt vfat defaults wait
+/dev/block/platform/soc@0/7824900.mmc/by-name/modem /vendor/firmware-modem vfat defaults wait
+/devices/platform/soc/7864900.sdhci/mmc_host/mmc*	auto	auto	defaults	voldmanaged=sdcard1:auto

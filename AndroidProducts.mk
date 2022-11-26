@@ -12,6 +12,8 @@
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/db845c.mk \
     $(LOCAL_DIR)/db845c_mini.mk \
+    $(LOCAL_DIR)/gt58.mk \
+    $(LOCAL_DIR)/gt58_mini.mk \
     $(LOCAL_DIR)/rb5.mk \
     $(LOCAL_DIR)/rb5_mini.mk \
     $(LOCAL_DIR)/sm8450_mini.mk \
@@ -26,6 +28,8 @@ ifneq ($(SRC_EVERVOLV_DIR),)
 PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/ev_db845c.mk \
     $(LOCAL_DIR)/ev_db845c_mini.mk \
+    $(LOCAL_DIR)/ev_gt58.mk \
+    $(LOCAL_DIR)/ev_gt58_mini.mk \
     $(LOCAL_DIR)/ev_rb5.mk \
     $(LOCAL_DIR)/ev_rb5_mini.mk \
     $(LOCAL_DIR)/ev_sm8450_mini.mk \
@@ -33,6 +37,7 @@ PRODUCT_MAKEFILES += \
 
 COMMON_LUNCH_CHOICES += \
     ev_db845c-userdebug \
+    ev_gt58-userdebug \
     ev_rb5-userdebug
 
 endif
