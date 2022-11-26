@@ -67,11 +67,9 @@ AB_OTA_PARTITIONS += \
     vendor
 
 PRODUCT_COPY_FILES += \
-    $(TARGET_KERNEL_DIR)/Image.gz:kernel \
     device/linaro/dragonboard/fstab.dynamic:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.$(TARGET_HARDWARE) \
     device/linaro/dragonboard/fstab.dynamic:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(TARGET_HARDWARE)
 
 TARGET_HARDWARE := db845c
-TARGET_KERNEL_USE ?= 5.15
 
 include device/linaro/dragonboard/device-common.mk
