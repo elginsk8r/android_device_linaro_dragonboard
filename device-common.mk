@@ -56,23 +56,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/linaro/db845c/$(EXPECTED_LINARO_VENDOR_VERSION) \
     vendor/linaro/rb5/$(EXPECTED_LINARO_VENDOR_VERSION)
 
-# Dynamic partitions
-PRODUCT_BUILD_SUPER_PARTITION := true
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
-
-# Enable Virtual A/B
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    product \
-    system \
-    system_ext \
-    vendor
-
 PRODUCT_COPY_FILES += \
-    $(TARGET_KERNEL_DIR)/Image.gz:kernel \
-    device/linaro/dragonboard/fstab.common:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.$(TARGET_HARDWARE) \
-    device/linaro/dragonboard/fstab.common:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(TARGET_HARDWARE) \
     device/linaro/dragonboard/init.common.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(TARGET_HARDWARE).rc \
     device/linaro/dragonboard/init.common.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(TARGET_HARDWARE).usb.rc \
     frameworks/base/data/keyboards/Generic.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/$(TARGET_HARDWARE).kl
