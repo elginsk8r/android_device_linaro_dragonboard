@@ -20,7 +20,7 @@
 # to only building on ARM if they include assembly. Individual makefiles
 # are responsible for having their own logic, for fine-grained control.
 
-ifneq ($(filter db845c rb5 hammerhead, $(TARGET_BOARD_PLATFORM)),)
+ifneq ($(filter db845c rb5 hammerhead gt58, $(TARGET_BOARD_PLATFORM)),)
 
 LOCAL_PATH := $(call my-dir)
 
@@ -33,9 +33,11 @@ $(eval $(call declare-1p-copy-files,device/linaro/dragonboard,.xml))
 $(eval $(call declare-1p-copy-files,device/linaro/dragonboard,fstab.db845c))
 $(eval $(call declare-1p-copy-files,device/linaro/dragonboard,fstab.rb5))
 $(eval $(call declare-1p-copy-files,device/linaro/dragonboard,fstab.hammerhead))
+$(eval $(call declare-1p-copy-files,device/linaro/dragonboard,fstab.gt58))
 
 # If some modules are built directly from this directory (not subdirectories),
 # their rules should be written here.
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
+
 endif

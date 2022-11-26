@@ -24,6 +24,8 @@ LOCAL_PATH := $(call my-dir)
 
 ifneq ($(filter hammerhead, $(TARGET_BOARD_PLATFORM)),)
 PLATFORM_INIT := msm8974
+else ifneq ($(filter gt58, $(TARGET_BOARD_PLATFORM)),)
+PLATFORM_INIT := msm8916
 endif
 PLATFORM_INIT ?= common
 

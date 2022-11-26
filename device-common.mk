@@ -60,7 +60,7 @@ endif
 PRODUCT_SOONG_NAMESPACES += \
     device/linaro/dragonboard
 
-ifneq ($(filter hammerhead, $(TARGET_HARDWARE)),)
+ifneq ($(filter gt58 hammerhead, $(TARGET_HARDWARE)),)
 SOC_INIT := legacy
 endif
 SOC_INIT ?= common
