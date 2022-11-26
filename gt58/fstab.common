@@ -1,0 +1,12 @@
+system		/system		ext4	noatime,ro,errors=panic		wait,logical,first_stage_mount
+vendor		/vendor		ext4	noatime,ro,errors=panic		wait,logical,first_stage_mount
+system_ext	/system_ext	ext4	noatime,ro,errors=panic		wait,logical,first_stage_mount
+product		/product	ext4	noatime,ro,errors=panic		wait,logical,first_stage_mount
+system_dlkm	/system_dlkm	ext4	ro				wait,logical,first_stage_mount
+/dev/block/platform/soc@0/7824900.mmc/by-name/userdata /data ext4 noatime,nosuid,nodev,barrier=1,noauto_da_alloc latemount,wait,formattable,quota
+/dev/block/platform/soc@0/7824900.mmc/by-name/persist /mnt/vendor/persist ext4 noatime,ro,noauto_da_alloc wait
+/dev/block/platform/soc@0/7824900.mmc/by-name/efs /mnt/vendor/efs ext4 nosuid,nodev,noatime,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic wait,check
+/dev/block/platform/soc@0/7824900.mmc/by-name/misc /misc emmc defaults defaults
+/dev/block/platform/soc@0/7824900.mmc/by-name/apnhlos /vendor/firmware_mnt vfat defaults wait
+/dev/block/platform/soc@0/7824900.mmc/by-name/modem /vendor/firmware-modem vfat defaults wait
+/devices/platform/soc@0/7864900.mmc/mmc_host/mmc*	auto	auto	defaults	voldmanaged=sdcard1:auto
