@@ -1,0 +1,37 @@
+include device/linaro/dragonboard/BoardConfigCommon.mk
+
+# Primary Arch
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_VARIANT := cortex-a53
+
+# Board Information
+TARGET_BOOTLOADER_BOARD_NAME := MSM8916
+TARGET_BOARD_PLATFORM := msm8916
+
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
+BOARD_RAMDISK_OFFSET := 0x02000000
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.bootdevice=7824900.sdhci
+BOARD_KERNEL_CMDLINE += deferred_probe_timeout=30
+BOARD_KERNEL_CMDLINE += qcom_geni_serial.con_enabled=1
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+
+# Image Configuration
+BOARD_BOOTIMAGE_PARTITION_SIZE := 13631488
+BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_CACHEIMAGE_PARTITION_SIZE := 314572800
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 15728640
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3145728000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 12138278912
+
+# Recovery
+TARGET_RECOVERY_FSTAB := device/linaro/dragonboard/gt58/fstab.qcom
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
+
+ifneq ($(filter ev_%, $(TARGET_PRODUCT)),)
+include device/linaro/dragonboard/gt58/BoardConfigEvervolv.mk
+endif
