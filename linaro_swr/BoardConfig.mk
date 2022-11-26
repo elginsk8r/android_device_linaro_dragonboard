@@ -45,3 +45,7 @@ include device/linaro/dragonboard/shared/graphics/drm_hwcomposer/BoardConfig.mk
 BOARD_SEPOLICY_DIRS += \
     device/linaro/dragonboard/shared/graphics/minigbm_msm/sepolicy \
     device/linaro/dragonboard/shared/graphics/swangle/sepolicy
+
+ifneq ($(filter ev_%, $(TARGET_PRODUCT)),)
+include device/linaro/dragonboard/BoardConfigEvervolv.mk
+endif
