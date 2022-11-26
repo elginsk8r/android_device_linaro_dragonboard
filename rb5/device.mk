@@ -45,10 +45,6 @@ PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=160
 # Copy firmware files
 $(call inherit-product-if-exists, vendor/linaro/rb5/$(EXPECTED_LINARO_VENDOR_VERSION)/device.mk)
 
-TARGET_DTB := qrb5165-rb5.dtb
 TARGET_HARDWARE := rb5
-TARGET_KERNEL_USE ?= 5.15
 
 include device/linaro/dragonboard/device-common.mk
-
-PRODUCT_COPY_FILES += $(TARGET_KERNEL_DIR)/qrb5165-rb5.dtb:dtb.img
