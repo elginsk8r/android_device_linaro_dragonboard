@@ -14,19 +14,6 @@
 # limitations under the License.
 #
 
-TARGET_KERNEL_DIR ?= device/linaro/dragonboard-kernel/android-$(TARGET_KERNEL_USE)
-TARGET_MODS := $(wildcard $(TARGET_KERNEL_DIR)/*.ko)
-
-BOARD_DO_NOT_STRIP_VENDOR_RAMDISK_MODULES := true
-BOARD_DO_NOT_STRIP_GENERIC_RAMDISK_MODULES := true
-ifeq ($(TARGET_SDCARD_BOOT), true)
-  # UFS module filename varies from ufs_qcom.ko to ufs-qcom.ko across different kernel versions
-  BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(TARGET_KERNEL_DIR)/ufs*qcom.ko)
-  BOARD_GENERIC_RAMDISK_KERNEL_MODULES := $(filter-out $(BOARD_VENDOR_KERNEL_MODULES),$(TARGET_MODS))
-else
-  BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(TARGET_MODS)
-endif
-
 PRODUCT_SHIPPING_API_LEVEL := 33
 
 # Check vendor package version
@@ -103,11 +90,27 @@ ifneq ($(TARGET_FSTAB_PATH),)
       $(TARGET_FSTAB_PATH):$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(TARGET_HARDWARE)
 endif
 
+# Kernel
+TARGET_KERNEL_DIR ?= device/linaro/dragonboard-kernel/android-$(TARGET_KERNEL_USE)
+ifneq (,$(wildcard $(TARGET_KERNEL_DIR)/Image.gz))
+  TARGET_PREBUILT_KERNEL := $(TARGET_KERNEL_DIR)/Image.gz
+  TARGET_MODS := $(wildcard $(TARGET_KERNEL_DIR)/*.ko)
+
+  BOARD_DO_NOT_STRIP_VENDOR_RAMDISK_MODULES := true
+  BOARD_DO_NOT_STRIP_GENERIC_RAMDISK_MODULES := true
+  ifeq ($(TARGET_SDCARD_BOOT), true)
+    # UFS module filename varies from ufs_qcom.ko to ufs-qcom.ko across different kernel versions
+    BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(TARGET_KERNEL_DIR)/ufs*qcom.ko)
+    BOARD_GENERIC_RAMDISK_KERNEL_MODULES := $(filter-out $(BOARD_VENDOR_KERNEL_MODULES),$(TARGET_MODS))
+  else
+    BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(TARGET_MODS)
+  endif
+endif
+
 PRODUCT_VENDOR_PROPERTIES += \
     persist.sys.zram_enabled=1
 
 PRODUCT_COPY_FILES += \
-    $(TARGET_KERNEL_DIR)/Image.gz:kernel \
     device/linaro/dragonboard/init.common.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(TARGET_HARDWARE).rc \
     device/linaro/dragonboard/init.common.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(TARGET_HARDWARE).usb.rc \
     frameworks/base/data/keyboards/Generic.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/$(TARGET_HARDWARE).kl

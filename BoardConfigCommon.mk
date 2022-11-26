@@ -65,5 +65,13 @@ endif
 # the dependency on FW_LOADER_USER_HELPER_FALLBACK kernel config
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
+ifneq ($(filter ev_$(TARGET_HARDWARE)%, $(TARGET_PRODUCT)),)
+  ifneq (,$(wildcard device/linaro/dragonboard/$(TARGET_HARDWARE)/BoardConfigEvervolv.mk))
+    include device/linaro/dragonboard/$(TARGET_HARDWARE)/BoardConfigEvervolv.mk
+  else
+    include device/linaro/dragonboard/BoardConfigEvervolv.mk
+  endif
+endif
+
 # inherit from the proprietary version
 -include vendor/linaro/dragonboard/BoardConfigVendor.mk
