@@ -1,0 +1,27 @@
+// Copyright 2012 The Android Open Source Project
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+python_defaults {
+    name: "dtbtool_defaults",
+    version: {
+        py2: {
+            enabled: false,
+        },
+        py3: {
+            enabled: true,
+            embedded_launcher: true,
+        },
+    },
+}
+
+python_binary_host {
+    name: "dtbtool",
+    defaults: ["dtbtool_defaults"],
+    main: "dtbtool.py",
+    srcs: [
+        "dtbtool.py",
+    ],
+}
