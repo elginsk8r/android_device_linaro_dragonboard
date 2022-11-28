@@ -61,3 +61,6 @@ endif
 # Copy firmware files to ramdisk/vendor_ramdisk to workaround
 # the dependency on FW_LOADER_USER_HELPER_FALLBACK kernel config
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
+# inherit from the proprietary version
+-include vendor/linaro/dragonboard/BoardConfigVendor.mk
