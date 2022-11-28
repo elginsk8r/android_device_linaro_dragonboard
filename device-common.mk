@@ -28,8 +28,10 @@ endif
 
 PRODUCT_SHIPPING_API_LEVEL := 31
 
-ifneq ($(filter db845c rb5 sm8450, $(TARGET_HARDWARE)),)
-include device/linaro/dragonboard/device-linaro.mk
+ifneq (,$(wildcard vendor/linaro/dragonboard/dragonboard-vendor.mk))
+    $(call inherit-product, vendor/linaro/dragonboard/dragonboard-vendor.mk)
+else ifneq ($(filter db845c rb5 sm8450, $(TARGET_HARDWARE)),)
+    $(call inherit-product, device/linaro/dragonboard/device-linaro.mk)
 endif
 
 PRODUCT_SOONG_NAMESPACES += \
