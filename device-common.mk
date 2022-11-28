@@ -32,30 +32,36 @@ PRODUCT_SHIPPING_API_LEVEL := 31
 # please modify the source git project here:
 #   https://staging-git.codelinaro.org/linaro/linaro-aosp/aosp-linaro-vendor-package
 include device/linaro/dragonboard/vendor-package-ver.mk
-ifneq (,$(wildcard $(LINARO_VENDOR_PATH)/db845c/$(EXPECTED_LINARO_VENDOR_VERSION)/version.mk))
-  # Unfortunately inherit-product doesn't export build variables from the
-  # called make file to the caller, so we have to include it directly here.
-  include $(LINARO_VENDOR_PATH)/db845c/$(EXPECTED_LINARO_VENDOR_VERSION)/version.mk
-  ifneq ($(TARGET_LINARO_VENDOR_VERSION), $(EXPECTED_LINARO_VENDOR_VERSION))
-    $(warning TARGET_LINARO_VENDOR_VERSION ($(TARGET_LINARO_VENDOR_VERSION)) does not match exiting the build ($(EXPECTED_LINARO_VENDOR_VERSION)).)
-    $(warning Please download new binaries here:)
-    $(warning    $(VND_PKG_URL) )
-    $(warning And extract in the ANDROID_TOP_DIR)
-    # Would be good to error out here, but that causes other issues
-  endif
+ifneq (,$(wildcard $(LINARO_VENDOR_PATH)/dragonboard/dragonboard-vendor.mk))
+    $(call inherit-product, $(LINARO_VENDOR_PATH)/dragonboard/dragonboard-vendor.mk)
 else
-  $(warning Missing Linaro Vendor Package!)
-  $(warning Please download new binaries here:)
-  $(warning    $(VND_PKG_URL) )
-  $(warning And extract in the ANDROID_TOP_DIR)
-  # Would be good to error out here, but that causes other issues
+    ifneq (,$(wildcard $(LINARO_VENDOR_PATH)/db845c/$(EXPECTED_LINARO_VENDOR_VERSION)/version.mk))
+        # Unfortunately inherit-product doesn't export build variables from the
+        # called make file to the caller, so we have to include it directly here.
+        include $(LINARO_VENDOR_PATH)/db845c/$(EXPECTED_LINARO_VENDOR_VERSION)/version.mk
+        ifneq ($(TARGET_LINARO_VENDOR_VERSION), $(EXPECTED_LINARO_VENDOR_VERSION))
+            $(warning TARGET_LINARO_VENDOR_VERSION ($(TARGET_LINARO_VENDOR_VERSION)) does not match exiting the build ($(EXPECTED_LINARO_VENDOR_VERSION)).)
+            $(warning Please download new binaries here:)
+            $(warning    $(VND_PKG_URL) )
+            $(warning And extract in the ANDROID_TOP_DIR)
+            # Would be good to error out here, but that causes other issues
+        endif
+    else
+        $(warning Missing Linaro Vendor Package!)
+        $(warning Please download new binaries here:)
+        $(warning    $(VND_PKG_URL) )
+        $(warning And extract in the ANDROID_TOP_DIR)
+        # Would be good to error out here, but that causes other issues
+    endif
+
+    PRODUCT_SOONG_NAMESPACES += \
+        vendor/linaro/linux-firmware/$(EXPECTED_LINARO_VENDOR_VERSION) \
+        vendor/linaro/db845c/$(EXPECTED_LINARO_VENDOR_VERSION) \
+        vendor/linaro/rb5/$(EXPECTED_LINARO_VENDOR_VERSION)
 endif
 
 PRODUCT_SOONG_NAMESPACES += \
-    device/linaro/dragonboard \
-    vendor/linaro/linux-firmware/$(EXPECTED_LINARO_VENDOR_VERSION) \
-    vendor/linaro/db845c/$(EXPECTED_LINARO_VENDOR_VERSION) \
-    vendor/linaro/rb5/$(EXPECTED_LINARO_VENDOR_VERSION)
+    device/linaro/dragonboard
 
 PRODUCT_COPY_FILES += \
     device/linaro/dragonboard/init.common.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(TARGET_HARDWARE).rc \
