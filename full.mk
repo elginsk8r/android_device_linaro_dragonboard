@@ -50,7 +50,7 @@ PRODUCT_PACKAGES += \
     libgallium_dri \
     libglapi
 
-TARGET_BUILD_MESA ?= false
+TARGET_BUILD_MESA ?= true
 ifeq ($(TARGET_BUILD_MESA), true)
    PRODUCT_SOONG_NAMESPACES += \
        external/mesa3d

@@ -36,6 +36,11 @@ else
   # Would be good to error out here, but that causes other issues
 endif
 
+# Mesa
+ifneq (,$(wildcard $(LINARO_VENDOR_PATH)/db845c/$(EXPECTED_LINARO_VENDOR_VERSION)/mesa_prebuilt/Android.bp))
+TARGET_BUILD_MESA := false
+endif
+
 PRODUCT_SOONG_NAMESPACES += \
     vendor/linaro/linux-firmware/$(EXPECTED_LINARO_VENDOR_VERSION) \
     vendor/linaro/db845c/$(EXPECTED_LINARO_VENDOR_VERSION) \
