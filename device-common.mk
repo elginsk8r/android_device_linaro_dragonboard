@@ -36,6 +36,7 @@ PRODUCT_SHIPPING_API_LEVEL := 33
 include device/linaro/dragonboard/vendor-package-ver.mk
 ifneq (,$(wildcard $(LINARO_VENDOR_PATH)/dragonboard/dragonboard-vendor.mk))
     $(call inherit-product, $(LINARO_VENDOR_PATH)/dragonboard/dragonboard-vendor.mk)
+    TARGET_BUILD_MESA := true
 else ifneq (,$(wildcard $(LINARO_VENDOR_PATH)/db845c/$(EXPECTED_LINARO_VENDOR_VERSION)/version.mk))
   # Unfortunately inherit-product doesn't export build variables from the
   # called make file to the caller, so we have to include it directly here.
