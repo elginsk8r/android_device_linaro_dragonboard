@@ -40,8 +40,8 @@ PRODUCT_COPY_FILES += \
 
 # Install scripts to set Ethernet MAC address
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/eth_mac_addr.rc:/system/etc/init/eth_mac_addr.rc \
-    $(LOCAL_PATH)/eth_mac_addr.sh:/system/bin/eth_mac_addr.sh
+    device/linaro/dragonboard/eth_mac_addr.rc:/system/etc/init/eth_mac_addr.rc \
+    device/linaro/dragonboard/eth_mac_addr.sh:/system/bin/eth_mac_addr.sh
 
 PRODUCT_VENDOR_PROPERTIES += ro.soc.manufacturer=Qualcomm
 PRODUCT_VENDOR_PROPERTIES += ro.soc.model=SDM845
