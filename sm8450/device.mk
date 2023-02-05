@@ -22,6 +22,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 PRODUCT_BUILD_SUPER_PARTITION := true
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
+PRODUCT_SHIPPING_API_LEVEL := 31
 
 # Enable Virtual A/B
 AB_OTA_UPDATER := true

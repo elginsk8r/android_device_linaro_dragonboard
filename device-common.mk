@@ -26,8 +26,6 @@ ifeq ($(TARGET_USES_GKI), true)
   endif
 endif
 
-PRODUCT_SHIPPING_API_LEVEL := 31
-
 ifneq (,$(wildcard vendor/linaro/dragonboard/dragonboard-vendor.mk))
     $(call inherit-product, vendor/linaro/dragonboard/dragonboard-vendor.mk)
 else ifneq ($(filter db845c rb5 sm8450, $(TARGET_HARDWARE)),)
