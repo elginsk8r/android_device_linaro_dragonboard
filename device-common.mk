@@ -26,8 +26,6 @@ ifeq ($(TARGET_USES_GKI), true)
   endif
 endif
 
-PRODUCT_SHIPPING_API_LEVEL := 31
-
 # Check vendor package version
 # If you need to make changes to the vendor partition,
 # please modify the source git project here:
