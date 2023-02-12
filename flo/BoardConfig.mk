@@ -1,0 +1,44 @@
+include device/linaro/dragonboard/BoardConfigCommon.mk
+
+# Primary Arch
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := krait
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+
+# Board Information
+TARGET_BOOTLOADER_BOARD_NAME := flo
+TARGET_BOARD_PLATFORM := flo
+
+TARGET_NO_KERNEL := false
+BOARD_KERNEL_BASE := 0x80200000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_CMDLINE := earlycon firmware_class.path=/vendor/firmware/ androidboot.hardware=flo
+BOARD_KERNEL_CMDLINE += printk.devkmsg=on deferred_probe_timeout=30
+BOARD_KERNEL_CMDLINE += qcom_geni_serial.con_enabled=1
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_RAMDISK_OFFSET := 0x02000000
+
+# Image Configuration
+BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216 # 16M
+BOARD_CACHEIMAGE_PARTITION_SIZE := 76581888 # 73M
+BOARD_PERSISTIMAGE_PARTITION_SIZE := 15360000 # 14.6M
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216 # 16M
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1572864000 # 1.5G
+BOARD_VENDORIMAGE_PARTITION_SIZE := 262144000 # 262M
+BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_COPY_OUT_VENDOR := vendor
+
+# Super partition
+TARGET_NO_RECOVERY := false
+TARGET_RECOVERY_FSTAB = device/linaro/dragonboard/fstab.flo
+
+ifneq ($(filter ev_%, $(TARGET_PRODUCT)),)
+include device/linaro/dragonboard/flo/BoardConfigEvervolv.mk
+endif
