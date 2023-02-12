@@ -19,7 +19,6 @@ TARGET_NO_KERNEL := true
 TARGET_NO_RECOVERY := true
 
 # Enable Treble
-PRODUCT_FULL_TREBLE := true
 BOARD_VNDK_VERSION := current
 
 # Mesa DRM hwcomposer

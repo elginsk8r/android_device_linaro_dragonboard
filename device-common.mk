@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Enable Treble
+PRODUCT_FULL_TREBLE ?= true
+
 TARGET_KERNEL_DIR ?= device/linaro/dragonboard-kernel/android-$(TARGET_KERNEL_USE)
 
 TARGET_USES_GKI ?= true
