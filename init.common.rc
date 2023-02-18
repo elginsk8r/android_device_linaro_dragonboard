@@ -1,5 +1,6 @@
 import init.${ro.hardware}.usb.rc
 import init.${ro.hardware}.power.rc
+import init.${ro.hardware}.soc.rc
 
 on early-fs
     start vold
@@ -21,12 +22,6 @@ on init
     # since /storage is mounted on post-fs in init.rc
     symlink /sdcard /storage/sdcard0
 
-    # Initialize cpusets to boot-time values
-    write /dev/cpuset/foreground/cpus 0-7
-    write /dev/cpuset/background/cpus 0-7
-    write /dev/cpuset/system-background/cpus 0-7
-    write /dev/cpuset/top-app/cpus 0-7
-
 on early-boot
     mount debugfs debugfs /sys/kernel/debug
     chmod 755 /sys/kernel/debug
@@ -42,22 +37,6 @@ on zygote-start
 
 on property:sys.boot_completed=1
     chmod 0755 /sys/kernel/debug/tracing
-
-    # update cpuset now that processors are up
-    # Foreground should contain most cores (7 is reserved for top-app)
-    write /dev/cpuset/foreground/cpus 0-6
-
-    # top-app gets all cpus (including reserved #7)
-    write /dev/cpuset/top-app/cpus 0-7
-
-    #background contains a small subset (generally one little core)
-    write /dev/cpuset/background/cpus 0
-
-    # add system-background cpuset, a new cpuset for system services
-    # that should not run on larger cores
-    # system-background is for system tasks that should only run on
-    # little cores, not on bigs to be used only by init
-    write /dev/cpuset/system-background/cpus 0-3
 
 service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
                        -Dnl80211 -g@android:wpa_wlan0

@@ -60,7 +60,13 @@ endif
 PRODUCT_SOONG_NAMESPACES += \
     device/linaro/dragonboard
 
+ifneq ($(filter hammerhead, $(TARGET_HARDWARE)),)
+SOC_INIT := legacy
+endif
+SOC_INIT ?= common
+
 PRODUCT_COPY_FILES += \
     device/linaro/dragonboard/init.common.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(TARGET_HARDWARE).rc \
+    device/linaro/dragonboard/init.$(SOC_INIT).soc.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(TARGET_HARDWARE).soc.rc \
     device/linaro/dragonboard/init.common.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(TARGET_HARDWARE).usb.rc \
     frameworks/base/data/keyboards/Generic.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/$(TARGET_HARDWARE).kl

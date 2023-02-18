@@ -22,6 +22,9 @@
 
 LOCAL_PATH := $(call my-dir)
 
+ifneq ($(filter hammerhead, $(TARGET_BOARD_PLATFORM)),)
+PLATFORM_INIT := msm8974
+endif
 PLATFORM_INIT ?= common
 
 include $(CLEAR_VARS)
