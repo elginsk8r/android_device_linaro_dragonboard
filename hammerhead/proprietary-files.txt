@@ -1,0 +1,65 @@
+## All firmware files from this list, unless pinned and noted otherwise, are
+## from hammerhead-ota-m4b30z-752c16b1.zip
+
+# BCM2079x firmware
+vendor/firmware/bcm2079x-b5_firmware.ncd
+vendor/firmware/bcm2079x-b5_pre_firmware.ncd
+vendor/firmware/bu24205_LGIT_VER_2_DATA1.bin
+vendor/firmware/bu24205_LGIT_VER_2_DATA2.bin
+vendor/firmware/bu24205_LGIT_VER_2_DATA3.bin
+vendor/firmware/bu24205_LGIT_VER_3_CAL.bin
+vendor/firmware/bu24205_LGIT_VER_3_DATA1.bin
+vendor/firmware/bu24205_LGIT_VER_3_DATA2.bin
+vendor/firmware/bu24205_LGIT_VER_3_DATA3.bin
+
+# CMN
+vendor/firmware/cmnlib.b00
+vendor/firmware/cmnlib.b01
+vendor/firmware/cmnlib.b02
+vendor/firmware/cmnlib.b03
+vendor/firmware/cmnlib.mdt
+
+# DSP
+vendor/firmware/adsp.b00
+vendor/firmware/adsp.b01
+vendor/firmware/adsp.b02
+vendor/firmware/adsp.b03
+vendor/firmware/adsp.b04
+vendor/firmware/adsp.b05
+vendor/firmware/adsp.b06
+vendor/firmware/adsp.b07
+vendor/firmware/adsp.b08
+vendor/firmware/adsp.b09
+vendor/firmware/adsp.b10
+vendor/firmware/adsp.b11
+vendor/firmware/adsp.b12
+vendor/firmware/adsp.mdt
+
+# HDCP
+vendor/firmware/discretix/dxhdcp2.b00
+vendor/firmware/discretix/dxhdcp2.b01
+vendor/firmware/discretix/dxhdcp2.b02
+vendor/firmware/discretix/dxhdcp2.b03
+vendor/firmware/discretix/dxhdcp2.mdt
+
+# Keymaster
+vendor/firmware/keymaster/keymaster.b00
+vendor/firmware/keymaster/keymaster.b01
+vendor/firmware/keymaster/keymaster.b02
+vendor/firmware/keymaster/keymaster.b03
+vendor/firmware/keymaster/keymaster.mdt
+
+# Venus
+vendor/firmware/venus.b00
+vendor/firmware/venus.b01
+vendor/firmware/venus.b02
+vendor/firmware/venus.b03
+vendor/firmware/venus.b04
+vendor/firmware/venus.mdt
+
+# Widevine
+vendor/firmware/widevine.b00
+vendor/firmware/widevine.b01
+vendor/firmware/widevine.b02
+vendor/firmware/widevine.b03
+vendor/firmware/widevine.mdt

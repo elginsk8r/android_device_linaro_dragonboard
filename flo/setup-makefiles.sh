@@ -8,14 +8,14 @@
 
 set -e
 
-DEVICE=dragonboard
+DEVICE=flo
 VENDOR=linaro
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-ANDROID_ROOT="${MY_DIR}/../../.."
+ANDROID_ROOT="${MY_DIR}/../../../.."
 
 HELPER="${ANDROID_ROOT}/tools/extract-utils/extract_utils.sh"
 if [ ! -f "${HELPER}" ]; then
@@ -28,7 +28,7 @@ source "${HELPER}"
 setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}"
 
 # Warning headers and guards
-write_headers "db845c db845c_mini flo flo_mini hammerhead hammerhead_mini rb5 rb5_mini sm8450_mini"
+write_headers "flo"
 
 write_makefiles "${MY_DIR}/proprietary-files.txt" true
 

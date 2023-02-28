@@ -35,6 +35,7 @@ endif
 include device/linaro/dragonboard/vendor-package-ver.mk
 ifneq (,$(wildcard $(LINARO_VENDOR_PATH)/dragonboard/dragonboard-vendor.mk))
     $(call inherit-product, $(LINARO_VENDOR_PATH)/dragonboard/dragonboard-vendor.mk)
+    $(call inherit-product-if-exists, $(LINARO_VENDOR_PATH)/$(TARGET_HARDWARE)/$(TARGET_HARDWARE)-vendor.mk)
 else
     ifneq (,$(wildcard $(LINARO_VENDOR_PATH)/db845c/$(EXPECTED_LINARO_VENDOR_VERSION)/version.mk))
         # Unfortunately inherit-product doesn't export build variables from the

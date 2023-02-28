@@ -1,0 +1,77 @@
+## All firmware files from this list, unless pinned and noted otherwise, are
+## from razor-mob30x-factory-52684dff.zip
+
+# BCM2079x firmware
+vendor/firmware/bcm2079x-b5_firmware.ncd
+vendor/firmware/bcm2079x-b5_pre_firmware.ncd
+
+# DSP
+vendor/firmware/dsps.b00
+vendor/firmware/dsps.b01
+vendor/firmware/dsps.b02
+vendor/firmware/dsps.b03
+vendor/firmware/dsps.b04
+vendor/firmware/dsps.b05
+vendor/firmware/dsps.mdt
+
+# GSS
+vendor/firmware/gss.b00
+vendor/firmware/gss.b01
+vendor/firmware/gss.b02
+vendor/firmware/gss.b03
+vendor/firmware/gss.b04
+vendor/firmware/gss.b05
+vendor/firmware/gss.b06
+vendor/firmware/gss.b07
+vendor/firmware/gss.b08
+vendor/firmware/gss.b09
+vendor/firmware/gss.b10
+vendor/firmware/gss.b11
+vendor/firmware/gss.mdt
+
+# HDCP
+vendor/firmware/discretix/dxhdcp2.b00
+vendor/firmware/discretix/dxhdcp2.b01
+vendor/firmware/discretix/dxhdcp2.b02
+vendor/firmware/discretix/dxhdcp2.b03
+vendor/firmware/discretix/dxhdcp2.mdt
+
+# Keymaster
+vendor/firmware/keymaster/keymaster.b00
+vendor/firmware/keymaster/keymaster.b01
+vendor/firmware/keymaster/keymaster.b02
+vendor/firmware/keymaster/keymaster.b03
+vendor/firmware/keymaster/keymaster.mdt
+
+# Q6
+vendor/firmware/q6.b00
+vendor/firmware/q6.b01
+vendor/firmware/q6.b03
+vendor/firmware/q6.b04
+vendor/firmware/q6.b05
+vendor/firmware/q6.b06
+vendor/firmware/q6.mdt
+
+# Trustzone
+vendor/firmware/tzapps.b00
+vendor/firmware/tzapps.b01
+vendor/firmware/tzapps.b02
+vendor/firmware/tzapps.b03
+vendor/firmware/tzapps.mdt
+
+# Vidc
+etc/firmware/vidc.b00:vendor/firmware/vidc.b00
+etc/firmware/vidc.b01:vendor/firmware/vidc.b01
+etc/firmware/vidc.b02:vendor/firmware/vidc.b02
+etc/firmware/vidc.b03:vendor/firmware/vidc.b03
+etc/firmware/vidc.mdt:vendor/firmware/vidc.mdt
+etc/firmware/vidcfw.elf:vendor/firmware/vidcfw.elf
+etc/firmware/vidc_1080p.fw:vendor/firmware/vidc_1080p.fw
+
+# WiFi
+vendor/firmware/wcnss.b00
+vendor/firmware/wcnss.b01
+vendor/firmware/wcnss.b02
+vendor/firmware/wcnss.b04
+vendor/firmware/wcnss.b05
+vendor/firmware/wcnss.mdt
