@@ -233,8 +233,8 @@ PRODUCT_PACKAGES += \
     rmtfs \
     tqftpserv
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/qcom/init.qcom.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.qcom.rc
+PRODUCT_PACKAGES += \
+    init.qcom.rc
 
 # Copy standard platform config files
 PRODUCT_COPY_FILES +=  \
