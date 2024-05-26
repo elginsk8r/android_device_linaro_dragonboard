@@ -44,9 +44,11 @@ PRODUCT_VENDOR_PROPERTIES += ro.soc.model=MSM8916
 $(call inherit-product-if-exists, vendor/linaro/db845c/$(EXPECTED_LINARO_VENDOR_VERSION)/device.mk)
 $(call inherit-product-if-exists, vendor/linaro/rb5/$(EXPECTED_LINARO_VENDOR_VERSION)/device.mk)
 
+# A-only Dynamic partitions
+AB_OTA_UPDATER ?= true
 TARGET_HARDWARE := gt58
-TARGET_KERNEL_USE ?= 6.1
 TARGET_SCREEN_DENSITY := 160
+WITH_FSTYPE := ext4
 
 PRODUCT_COPY_FILES += \
     device/linaro/dragonboard/$(TARGET_HARDWARE)/fstab.common:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.$(TARGET_HARDWARE) \

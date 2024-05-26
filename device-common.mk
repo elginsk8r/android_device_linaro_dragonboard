@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-PRODUCT_SHIPPING_API_LEVEL := 31
+PRODUCT_SHIPPING_API_LEVEL ?= 31
 
 # Check vendor package version
 # If you need to make changes to the vendor partition,
@@ -50,9 +50,11 @@ PRODUCT_SOONG_NAMESPACES += \
     device/linaro/dragonboard
 
 # Dynamic partitions
-PRODUCT_BUILD_SUPER_PARTITION := true
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_BUILD_SUPER_PARTITION ?= true
+PRODUCT_USE_DYNAMIC_PARTITIONS ?= true
+ifeq ($(PRODUCT_USE_DYNAMIC_PARTITIONS),true)
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
+endif
 
 # Enable Virtual A/B
 AB_OTA_UPDATER ?= true
