@@ -56,8 +56,9 @@ PRODUCT_SOONG_NAMESPACES += \
     device/linaro/dragonboard
 
 # Dynamic partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS ?= true
+ifeq ($(PRODUCT_USE_DYNAMIC_PARTITIONS),true)
 PRODUCT_BUILD_SUPER_PARTITION := true
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
 # Enable Virtual A/B
@@ -72,6 +73,7 @@ AB_OTA_PARTITIONS += \
 PRODUCT_COPY_FILES += \
     device/linaro/dragonboard/fstab.common:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.$(TARGET_HARDWARE) \
     device/linaro/dragonboard/fstab.common:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(TARGET_HARDWARE)
+endif
 endif
 
 PRODUCT_COPY_FILES += \
