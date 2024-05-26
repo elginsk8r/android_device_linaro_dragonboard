@@ -61,32 +61,46 @@ PRODUCT_SOONG_NAMESPACES += \
     device/linaro/dragonboard
 
 # Dynamic partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS ?= true
+ifeq ($(PRODUCT_USE_DYNAMIC_PARTITIONS), true)
 PRODUCT_BUILD_SUPER_PARTITION := true
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
+endif
 
 # Enable Virtual A/B
-AB_OTA_UPDATER := true
+AB_OTA_UPDATER ?= true
+ifeq ($(AB_OTA_UPDATER),true)
 AB_OTA_PARTITIONS += \
     product \
     system \
     system_ext \
     vendor
 
+FSTAB_SUFFIX := _ab
+else
+FSTAB_SUFFIX :=
+endif
+
 ifeq ($(TARGET_SDCARD_BOOT), true)
   ifneq ($(filter 5.4 5.10 5.15, $(TARGET_KERNEL_USE)),)
-    PRODUCT_COPY_FILES += \
-        device/linaro/dragonboard/shared/utils/sdcard-boot/fstab.sdhci:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.$(TARGET_HARDWARE) \
-        device/linaro/dragonboard/shared/utils/sdcard-boot/fstab.sdhci:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(TARGET_HARDWARE)
+    fstab_name := fstab.sdhci$(FSTAB_SUFFIX)
   else
-    PRODUCT_COPY_FILES += \
-        device/linaro/dragonboard/shared/utils/sdcard-boot/fstab.mmc:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.$(TARGET_HARDWARE) \
-        device/linaro/dragonboard/shared/utils/sdcard-boot/fstab.mmc:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(TARGET_HARDWARE)
+    fstab_name := fstab.mmc$(FSTAB_SUFFIX)
   endif
-else
+endif
+fstab_name ?= fstab.common$(FSTAB_SUFFIX)
+
+ifneq (,$(wildcard device/linaro/dragonboard/$(TARGET_HARDWARE)/$(fstab_name)))
+  TARGET_FSTAB_PATH := device/linaro/dragonboard/$(TARGET_HARDWARE)/$(fstab_name)
+else ifeq ($(TARGET_SDCARD_BOOT), true)
+  TARGET_FSTAB_PATH := device/linaro/dragonboard/shared/utils/sdcard-boot/$(fstab_name)
+endif
+TARGET_FSTAB_PATH ?= device/linaro/dragonboard/$(fstab_name)
+
+ifneq ($(TARGET_FSTAB_PATH),)
   PRODUCT_COPY_FILES += \
-      device/linaro/dragonboard/fstab.common:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.$(TARGET_HARDWARE) \
-      device/linaro/dragonboard/fstab.common:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(TARGET_HARDWARE)
+      $(TARGET_FSTAB_PATH):$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.$(TARGET_HARDWARE) \
+      $(TARGET_FSTAB_PATH):$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(TARGET_HARDWARE)
 endif
 
 PRODUCT_VENDOR_PROPERTIES += \
