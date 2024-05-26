@@ -79,4 +79,6 @@ TARGET_KERNEL_USE ?= mainline
 PRODUCT_MAX_PAGE_SIZE_SUPPORTED := 16384
 PRODUCT_NO_BIONIC_PAGE_SIZE_MACRO := true
 
+include device/linaro/dragonboard/shared/partitions/virtual_ab.mk
+
 include device/linaro/dragonboard/device-common.mk

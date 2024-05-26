@@ -47,6 +47,7 @@ BOARD_KERNEL_CMDLINE += allow_mismatched_32bit_el0
 BOARD_KERNEL_CMDLINE += console=ttyMSM0
 
 # Image Configuration
+include device/linaro/dragonboard/shared/partitions/BoardConfigVirtualAb.mk
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864 #64M
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864 #64M
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 21474836480

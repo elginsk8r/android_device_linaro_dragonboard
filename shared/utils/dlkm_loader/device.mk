@@ -1,4 +1,6 @@
+ifeq ($(AB_OTA_UPDATER), true)
 AB_OTA_PARTITIONS += system_dlkm vendor_dlkm
+endif
 PRODUCT_PACKAGES += dlkm_loader
 
 # List of modules that should not load automatically

@@ -21,6 +21,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 TARGET_HARDWARE := sm8450
 TARGET_KERNEL_USE ?= mainline
 
+include device/linaro/dragonboard/shared/partitions/virtual_ab.mk
+
 include device/linaro/dragonboard/device-common.mk
 
 PRODUCT_COPY_FILES += $(TARGET_KERNEL_DIR)/sm8450-qrd.dtb:dtb.img

@@ -66,6 +66,7 @@ ifeq ($(TARGET_BOOTS_16K), true)
 endif
 
 # Image Configuration
+include device/linaro/dragonboard/shared/partitions/BoardConfigVirtualAb.mk
 BOARD_BOOTIMAGE_PARTITION_SIZE := 100663296 #96M
 BOARD_FLASH_BLOCK_SIZE := 4096
 ifeq ($(TARGET_SDCARD_BOOT), true)

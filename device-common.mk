@@ -61,35 +61,6 @@ PRODUCT_SOONG_NAMESPACES += \
     device/linaro/dragonboard \
     vendor/linaro/shared/$(EXPECTED_LINARO_VENDOR_VERSION)/linux-firmware
 
-# Dynamic partitions
-PRODUCT_BUILD_SUPER_PARTITION := true
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
-
-# Enable Virtual A/B
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    product \
-    system \
-    system_ext \
-    vendor
-
-ifeq ($(TARGET_SDCARD_BOOT), true)
-  ifneq ($(filter 5.4 5.10 5.15, $(TARGET_KERNEL_USE)),)
-    PRODUCT_COPY_FILES += \
-        device/linaro/dragonboard/shared/utils/sdcard-boot/fstab.sdhci:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.$(TARGET_HARDWARE) \
-        device/linaro/dragonboard/shared/utils/sdcard-boot/fstab.sdhci:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(TARGET_HARDWARE)
-  else
-    PRODUCT_COPY_FILES += \
-        device/linaro/dragonboard/shared/utils/sdcard-boot/fstab.mmc:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.$(TARGET_HARDWARE) \
-        device/linaro/dragonboard/shared/utils/sdcard-boot/fstab.mmc:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(TARGET_HARDWARE)
-  endif
-else
-  PRODUCT_COPY_FILES += \
-      device/linaro/dragonboard/fstab.common:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.$(TARGET_HARDWARE) \
-      device/linaro/dragonboard/fstab.common:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(TARGET_HARDWARE)
-endif
-
 PRODUCT_VENDOR_PROPERTIES += \
     persist.sys.zram_enabled=1
 
