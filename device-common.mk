@@ -40,10 +40,8 @@ else ifneq (,$(wildcard $(LINARO_VENDOR_PATH)/db845c/$(EXPECTED_LINARO_VENDOR_VE
     vendor/linaro/db845c/$(EXPECTED_LINARO_VENDOR_VERSION) \
     vendor/linaro/rb5/$(EXPECTED_LINARO_VENDOR_VERSION)
 else
-  $(warning Missing Linaro Vendor Package!)
-  $(warning Please download and extract the vendor binaries by running the following script:)
-  $(warning    ./device/linaro/dragonboard/fetch-vendor-package.sh )
-  # Would be good to error out here, but that causes other issues
+    TARGET_BUILD_MESA := true
+    $(call inherit-product, device/linaro/dragonboard/firmware.mk)
 endif
 
 PRODUCT_SOONG_NAMESPACES += \
