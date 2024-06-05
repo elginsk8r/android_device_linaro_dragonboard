@@ -35,6 +35,9 @@ endif
 
 PRODUCT_SHIPPING_API_LEVEL := 33
 
+# Inherit vendor firmware
+$(call inherit-product, device/linaro/dragonboard/firmware.mk)
+
 PRODUCT_SOONG_NAMESPACES += \
     device/linaro/dragonboard
 
