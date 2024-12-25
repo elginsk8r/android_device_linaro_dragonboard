@@ -23,11 +23,7 @@ PRODUCT_PACKAGES := \
     libgallium_dri \
     libglapi
 
-include device/linaro/dragonboard/vendor-package-ver.mk
-ifeq (,$(wildcard $(LINARO_VENDOR_PATH)/db845c/$(EXPECTED_LINARO_VENDOR_VERSION)/mesa_prebuilt/Android.bp))
-TARGET_BUILD_MESA := true
-endif
-TARGET_BUILD_MESA ?= false
+TARGET_BUILD_MESA ?= true
 ifeq ($(TARGET_BUILD_MESA), true)
    PRODUCT_SOONG_NAMESPACES += \
        external/mesa3d

@@ -17,7 +17,6 @@
 # setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
-include $(LOCAL_PATH)/../vendor-package-ver.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
 # dlkm_loader
@@ -61,15 +60,9 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.soc.manufacturer=Snapdragon 8 Gen Devboard \
     ro.soc.model=SM8x50
 
-PRODUCT_SOONG_NAMESPACES += \
-    vendor/linaro/sm8x50/$(EXPECTED_LINARO_VENDOR_VERSION)
-
 # XXX until v4 support
 PRODUCT_COPY_FILES += \
     device/linaro/dragonboard/shared/utils/dlkm_loader/vendor_ramdisk.modules.blocklist:$(TARGET_COPY_OUT_RAMDISK)/lib/modules/modules.blocklist
-
-# Copy firmware files
-$(call inherit-product-if-exists, vendor/linaro/sm8x50/$(EXPECTED_LINARO_VENDOR_VERSION)/device.mk)
 
 TARGET_HARDWARE := sm8x50
 TARGET_KERNEL_USE ?= mainline

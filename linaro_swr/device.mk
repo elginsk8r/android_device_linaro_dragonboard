@@ -17,7 +17,6 @@
 # setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
-include $(LOCAL_PATH)/../vendor-package-ver.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
 # dlkm_loader
@@ -54,14 +53,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_VENDOR_PROPERTIES += \
     ro.soc.manufacturer=Generic Qcom arm64 arch \
     ro.soc.model=linaro_swr
-
-PRODUCT_SOONG_NAMESPACES += \
-    vendor/linaro/db845c/$(EXPECTED_LINARO_VENDOR_VERSION) \
-    vendor/linaro/rb5/$(EXPECTED_LINARO_VENDOR_VERSION)
-
-# Copy firmware files
-$(call inherit-product-if-exists, vendor/linaro/db845c/$(EXPECTED_LINARO_VENDOR_VERSION)/device.mk)
-$(call inherit-product-if-exists, vendor/linaro/rb5/$(EXPECTED_LINARO_VENDOR_VERSION)/device.mk)
 
 TARGET_HARDWARE := linaro_swr
 TARGET_KERNEL_USE ?= 6.6

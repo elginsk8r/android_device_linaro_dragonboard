@@ -35,31 +35,8 @@ endif
 
 PRODUCT_SHIPPING_API_LEVEL := 33
 
-# Check vendor package version
-# If you need to make changes to the vendor partition,
-# please modify the source git project here:
-#   https://source.devboardsforandroid.linaro.org/linaro-vendor-package/
-include device/linaro/dragonboard/vendor-package-ver.mk
-ifneq (,$(wildcard $(LINARO_VENDOR_PATH)/db845c/$(EXPECTED_LINARO_VENDOR_VERSION)/version.mk))
-  # Unfortunately inherit-product doesn't export build variables from the
-  # called make file to the caller, so we have to include it directly here.
-  include $(LINARO_VENDOR_PATH)/db845c/$(EXPECTED_LINARO_VENDOR_VERSION)/version.mk
-  ifneq ($(TARGET_LINARO_VENDOR_VERSION), $(EXPECTED_LINARO_VENDOR_VERSION))
-    $(warning TARGET_LINARO_VENDOR_VERSION ($(TARGET_LINARO_VENDOR_VERSION)) does not match exiting the build ($(EXPECTED_LINARO_VENDOR_VERSION)).)
-    $(warning Please download and extract the new binaries by running the following script:)
-    $(warning    ./device/linaro/dragonboard/fetch-vendor-package.sh )
-    # Would be good to error out here, but that causes other issues
-  endif
-else
-  $(warning Missing Linaro Vendor Package!)
-  $(warning Please download and extract the vendor binaries by running the following script:)
-  $(warning    ./device/linaro/dragonboard/fetch-vendor-package.sh )
-  # Would be good to error out here, but that causes other issues
-endif
-
 PRODUCT_SOONG_NAMESPACES += \
-    device/linaro/dragonboard \
-    vendor/linaro/shared/$(EXPECTED_LINARO_VENDOR_VERSION)/linux-firmware
+    device/linaro/dragonboard
 
 PRODUCT_VENDOR_PROPERTIES += \
     persist.sys.zram_enabled=1
